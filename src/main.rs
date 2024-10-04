@@ -44,7 +44,7 @@ fn main() {
         is_black_turn = !is_black_turn;
     }
 }
-
+//Function to print the current state of the board
 fn print_board(board: &[[char; 8]; 8]) {
     println!("  abcdefgh");
     for (i, row) in board.iter().enumerate() {
@@ -55,7 +55,7 @@ fn print_board(board: &[[char; 8]; 8]) {
         println!();
     }
 }
-
+//Function to parse the move input given by user
 fn parse_input(
     input: &str,
     board: &[[char; 8]; 8],
@@ -76,7 +76,7 @@ fn parse_input(
     }
     Err("Invalid move. Try again.")
 }
-
+//Function to check if a given move is valid
 fn is_valid_move(board: &[[char; 8]; 8], r: usize, c: usize, is_black_turn: bool) -> bool {
     if board[r][c] != '.' {
         return false;
@@ -114,7 +114,7 @@ fn is_valid_move(board: &[[char; 8]; 8], r: usize, c: usize, is_black_turn: bool
     }
     false
 }
-
+//Function to make a move and update the board
 fn make_move(board: &mut [[char; 8]; 8], r: usize, c: usize, is_black_turn: bool) {
     let player = if is_black_turn { 'B' } else { 'W' };
     let opponent = if is_black_turn { 'W' } else { 'B' };
@@ -152,11 +152,11 @@ fn make_move(board: &mut [[char; 8]; 8], r: usize, c: usize, is_black_turn: bool
         }
     }
 }
-
+//Function to check if the row and col are in-bounds
 fn in_bounds(r: isize, c: isize) -> bool {
     (0..8).contains(&c) && (0..8).contains(&r)
 }
-
+//Function to check if a given turn is valid
 fn valid_turn(board: &[[char; 8]; 8], is_black_turn: bool) -> bool {
     for i in 0..8 {
         for j in 0..8 {
@@ -172,7 +172,7 @@ fn valid_turn(board: &[[char; 8]; 8], is_black_turn: bool) -> bool {
     );
     false
 }
-
+//Function to assess who won the game and to display the final statement
 fn game_over_display(board: &[[char; 8]; 8]) {
     let mut w_count = 0;
     let mut b_count = 0;
